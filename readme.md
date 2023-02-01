@@ -24,6 +24,10 @@ Here we describe how to send the event information via files. If we suppose that
 
     python3 hmb_client/publish_hmb.py MYFILE.txt -t file --url http://cerf.emsc-csem.org/ExchangeEvent --cfg institut.cfg --queue QQQ
 
+Note that if you know the eventid of the event (e.g. TOTO2023fgh), it's helpfull if you can add the argument *-m eventid:TOTO2023fgh*: 
+
+    python3 hmb_client/publish_hmb.py MYFILE.txt -t file --url http://cerf.emsc-csem.org/ExchangeEvent --cfg institut.cfg --queue QQQ -m eventid:TOTO2023fgh
+
 ## Use case: send seiscomp origins
 In the case you would like to send seiscomp origins to hmb, we provide the script *scorigin_to_rts.sh* that should be executed by the scalert seiscomp plugin.
 
