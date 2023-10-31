@@ -44,6 +44,7 @@ then
 fi
 
 dump_event_qml $eventid \
+    | sccnv -i - -o qml1.2:- \
     | ${publish_path} -t ztxt -m eventid:$eventid \
         --queue ${queue_name} \
         --cfg ${cfg_filename} \
