@@ -24,9 +24,15 @@ Here we describe how to send the event information via files. If we suppose that
 
     python3 hmb_client/publish_hmb.py MYFILE.txt -t file --url http://cerf.emsc-csem.org/ExchangeEvent --cfg institut.cfg --queue QQQ
 
-Note that if you know the eventid of the event (e.g. TOTO2023fgh), it's helpfull if you can add the argument *-m eventid:TOTO2023fgh*: 
+Note that some metadata are really usefull:
+    - if you know the eventid of the event (e.g. TOTO2023fgh), it's helpfull if you can add the argument *-m eventid:TOTO2023fgh*;
+    - if you want to delete this event, you can add *-m deleted:1* (deleted:0 means no deletion);
+    - if you send only a moment tensor, you can add *-m datatype:mt*
 
-    python3 hmb_client/publish_hmb.py MYFILE.txt -t file --url http://cerf.emsc-csem.org/ExchangeEvent --cfg institut.cfg --queue QQQ -m eventid:TOTO2023fgh
+To specify the publication of a moment tensor having a given eventid, we can run:
+
+    python3 hmb_client/publish_hmb.py MYFILE.txt -t file --url http://cerf.emsc-csem.org/ExchangeEvent --cfg institut.cfg --queue QQQ -m eventid:TOTO2023fgh -m datatype:mt
+
 
 ## Use case: send seiscomp origins
 In the case you would like to send seiscomp origins to hmb, we provide the script *scorigin_to_rts.sh* that should be executed by the scalert seiscomp plugin.
